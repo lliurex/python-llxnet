@@ -1,0 +1,125 @@
+python-llxnet (0.19.2) xenial; urgency=medium
+
+  * Improved compatibility with python3
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Mon, 03 Sep 2018 11:55:35 +0200
+
+python-llxnet (0.19.1) xenial; urgency=high
+
+  * Fix problem with old packages
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Tue, 14 Nov 2017 12:01:05 +0100
+
+python-llxnet (0.19) xenial; urgency=medium
+
+  * Add support to python3
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Mon, 13 Nov 2017 17:55:23 +0100
+
+python-llxnet (0.18) xenial; urgency=medium
+
+  * Rename files for nat
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 13 Oct 2017 14:23:23 +0200
+
+python-llxnet (0.17) xenial; urgency=medium
+
+  * interfaces_parser added features:
+    - delete_all_interface
+    - auto_toggle
+    - delete_auto
+    - update_dns
+    - get_interfaces_in_range
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Wed, 11 Oct 2017 18:29:29 +0200
+
+python-llxnet (0.16.1) xenial; urgency=high
+
+  * fixing build dependencies
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Fri, 26 Feb 2016 13:22:30 +0100
+
+python-llxnet (0.16) xenial; urgency=high
+
+  * Trying to fix dependencies
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Fri, 26 Feb 2016 13:11:09 +0100
+
+python-llxnet (0.15) xenial; urgency=medium
+
+  * Ported code to xenial
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Mon, 01 Feb 2016 16:53:05 +0100
+
+python-llxnet (0.12) trusty; urgency=high
+
+  *  New releases for LliureX 15.05
+
+ -- Alfons Lloret Sananton <turix13@gmail.com>  Wed, 01 Oct 2014 09:37:20 +0200
+
+python-llxnet (0.11) precise; urgency=high
+
+  * Fixed enablenat script
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Mon, 24 Jun 2013 09:51:09 +0200
+
+python-llxnet (0.10) precise; urgency=low
+
+  * Only enable nat when its not configured
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 21 Jun 2013 23:43:06 +0200
+
+python-llxnet (0.09) precise; urgency=low
+
+  * Added functions to query nat and routing persistence
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 21 Jun 2013 23:39:14 +0200
+
+python-llxnet (0.08) precise; urgency=low
+
+  * Add atribute when change to dhcp method
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Mon, 17 Jun 2013 18:28:19 +0200
+
+python-llxnet (0.07) precise; urgency=low
+
+  * dummy upgrade
+
+ -- Hector Garcia Huerta <cless@anubis.lliurex.fs>  Tue, 21 May 2013 13:21:42 +0200
+
+python-llxnet (0.06) precise; urgency=low
+
+  * Fixed bug when getting ethernet info
+  * Fixed checking an empty string as a valid ip. 
+
+ -- Hector Garcia Huerta <raurodse@gmail.com>  Tue, 07 May 2013 12:35:52 +0200
+
+python-llxnet (0.05) precise; urgency=low
+
+  * Added method to insert stanza on InterfacesParser object
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 05 Apr 2013 13:18:44 +0200
+
+python-llxnet (0.04) precise; urgency=low
+
+  * Fixed bug with method read on InterfacesParser class
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 05 Apr 2013 13:16:41 +0200
+
+python-llxnet (0.03) precise; urgency=low
+
+  * Added new class to edit /etc/network/interfaces and enable routing
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Thu, 28 Feb 2013 13:38:25 +0100
+
+python-llxnet (0.02) precise; urgency=low
+
+  * Update to ppa
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Thu, 28 Feb 2013 13:36:44 +0100
+
+python-llxnet (0.01) unstable; urgency=low
+
+  * Initial release.
+
+ -- Hector Garcia Huerta <lliurex_devel1@edu.gva.es>  Mon, 23 Jul 2012 10:39:19 +0200
