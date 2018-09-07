@@ -1,0 +1,19 @@
+[Unit]
+Description=Enable nat 
+Wants=network-online.target
+After=network-online.target
+
+
+[Service]
+User=root
+ExecStart=/usr/bin/natmanager activate %I
+StandardOutput=journal
+ExecStop=/usr/bin/natmanager deactivate %I
+#Restart=always
+#RestartSec=5
+#StartLimitBurst=10
+#StartLimitInterval=200
+
+[Install]
+WantedBy=multi-user.target
+

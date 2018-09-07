@@ -40,5 +40,5 @@ case $OPTION in
 	;;
 esac
 
-
+sleep infinity
 
