@@ -248,6 +248,26 @@ def get_network_ip(ip,netmask):
 	return ".".join(result)
 
 
+def change_option_sysctl(file_path,needle,value):
+	if (os.path.exists(file_path)):
+			f = open(file_path,'r')
+			lines = f.readlines()
+			f.close()
+	else:
+			lines = []
+	found = False
+	f = open(file_path,'w')
+	for x in lines:
+			if(needle in x): 
+					f.write(value+"\n")
+					found = True
+					continue
+			f.write(x)
+	if (not found):
+			f.write(value+"\n")
+	f.close()
+
+
 
 if __name__=="__main__":
 	print(get_network_ip('192.168.254.245','255.255.255.0'))
