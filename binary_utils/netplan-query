@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+
+import importlib.util
+import sys
+import ipaddress
+
+if len(sys.argv) != 3 :
+    print('error',file=sys.stderr)
+    sys.exit(1)
+
+spec = importlib.util.spec_from_file_location('netplan','/usr/share/netplan/netplan/configmanager.py')
+netplan = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(netplan)
+netplan_config_manager = netplan.ConfigManager()
+netplan_config_manager.parse()
+
+interface = sys.argv[1]
+needle = sys.argv[2]
+
+raw_ip = None
+if needle.startswith('replication_'):
+    for ip in netplan_config_manager.ethernets[interface]['addresses']:
+        if ip.startswith('10.3'):
+            raw_ip = ip
+            break
+        else:
+            continue
+else:
+    for ip in netplan_config_manager.ethernets[interface]['addresses']:
+        if not ip.startswith('10.3'):
+            raw_ip = ip
+            break
+        else:
+            continue
+if not raw_ip:
+    print('error 2',file=sys.stderr)
+    sys.exit(1)
+
+object_interface = ipaddress.IPv4Interface(raw_ip)
+
+needle = needle.replace('replication_','')
+
+if needle.lower() == 'ip':
+    print(object_interface.ip.compressed)
+    sys.exit()
+elif needle.lower() == 'network':
+    print(object_interface.network.compressed)
+    sys.exit()
+
