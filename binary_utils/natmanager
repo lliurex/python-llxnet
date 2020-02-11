@@ -10,6 +10,21 @@ nat_rules(){
         #return $rc
 }
 
+nat_replication(){
+	REPLICATIONIP=$(/usr/bin/netplan-query $NET_EXT_IFACE replication_ip)
+	for AUX_IFACE in $NET_INT_IFACE; do
+		AUXNETWORK=$(/usr/bin/netplan-query $AUX_IFACE network)
+		iptables -${OPTION} FORWARD -i $AUX_IFACE -o $NET_EXT_IFACE -j ACCEPT
+		iptables -${OPTION} FORWARD -i $NET_EXT_IFACE -o $AUX_IFACE -j ACCEPT
+		if [ "${OPTION}" = "A" ]; then
+			iptables -I POSTROUTING -t nat -o $NET_EXT_IFACE -s $AUXNETWORK -j SNAT --to $REPLICATIONIP
+		else
+			iptables -D POSTROUTING -t nat -o $NET_EXT_IFACE -s $AUXNETWORK -j SNAT --to $REPLICATIONIP
+		fi
+	done
+}
+
+
 check_arguments(){
   if [ "$#" -lt "2" ]; then
   	exit 0 
@@ -27,6 +42,7 @@ parse_arguments(){
   NET_EXT_IFACE=$IFACE
   NET_INT_IFACE=`$PATH_INTERNAL_INTERFACES`
   if [ -z "$NET_INT_IFACE" ]; then
+	echo "script to get internal interfaces is void"
   	exit 0
   fi
 
@@ -60,6 +76,23 @@ case $OPTION in
 		nat_rules
 	fi
 	;;
+
+"activate_replication_nat" )
+	if ! `iptables-save -t nat | grep "\-A POSTROUTING \-o $NET_EXT_IFACE" | grep "\-j SNAT" 1>/dev/null 2>&1` ; then 
+		OPTION="A"
+		nat_replication
+	fi
+
+	;;
+
+"deactivate_replication_nat" )
+	if `iptables-save -t nat | grep "\-A POSTROUTING \-o $NET_EXT_IFACE" | grep "\-j SNAT" 1>/dev/null 2>&1` ; then  
+		OPTION="D"
+                nat_replication
+	fi
+
+	;;
+
 esac
 
 sleep infinity
