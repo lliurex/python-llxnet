@@ -78,7 +78,7 @@ case $OPTION in
 	;;
 
 "activate_replication_nat" )
-	if ! `iptables-save -t nat | grep "\-A POSTROUTING \-o $NET_EXT_IFACE" | grep "\-j SNAT" 1>/dev/null 2>&1` ; then 
+	if ! `iptables-save -t nat | grep "\-A POSTROUTING" | grep  "\-o $NET_EXT_IFACE \-j SNAT" 1>/dev/null 2>&1` ; then 
 		OPTION="A"
 		nat_replication
 	fi
@@ -86,7 +86,7 @@ case $OPTION in
 	;;
 
 "deactivate_replication_nat" )
-	if `iptables-save -t nat | grep "\-A POSTROUTING \-o $NET_EXT_IFACE" | grep "\-j SNAT" 1>/dev/null 2>&1` ; then  
+	if `iptables-save -t nat | grep "\-A POSTROUTING" | grep  "\-o $NET_EXT_IFACE \-j SNAT" 1>/dev/null 2>&1` ; then  
 		OPTION="D"
                 nat_replication
 	fi
