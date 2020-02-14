@@ -1,3 +1,9 @@
+python-llxnet (0.21) bionic; urgency=medium
+
+  * Added new actions to set iptables for replication interface
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 14 Feb 2020 13:56:17 +0100
+
 python-llxnet (0.20.2) bionic; urgency=medium
 
   * Refactorize
