@@ -1,3 +1,10 @@
+python-llxnet (0.23) focal; urgency=medium
+
+  * First focal release
+  * Removed python2 build
+
+ -- Juanma1980 <juanma1980@gmail.com>  Wed, 27 Jan 2021 10:20:00 +0100
+
 python-llxnet (0.22) bionic; urgency=medium
 
   * Modify rule to replication interface is external interface
