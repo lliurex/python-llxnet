@@ -6,7 +6,10 @@ import subprocess
 
 def get_IPNewtork_object(device):
     info = get_device_info(device)
-    return netaddr.IPNetwork("{ip}/{mask}".format(ip=info['ip'], mask=info['netmask']))
+    if 'ip' in info and 'netmask' in info:
+        return netaddr.IPNetwork("{ip}/{mask}".format(ip=info['ip'], mask=info['netmask']))
+    else:
+        return None
 
 def is_valid_ip(ip):
 	'''
