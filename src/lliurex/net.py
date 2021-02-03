@@ -4,6 +4,10 @@ import socket
 import struct
 import subprocess
 
+def get_IPNewtork_object(device):
+    info = get_device_info(device)
+    return netaddr.IPNetwork("{ip}/{mask}".format(ip=info['ip'], mask=info['netmask']))
+
 def is_valid_ip(ip):
 	'''
 	Checks whether an ip is valid or not.
