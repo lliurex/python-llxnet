@@ -3,11 +3,12 @@ import netaddr
 import socket
 import struct
 import subprocess
+import ipaddress
 
-def get_IPNewtork_object(device):
+def get_ip_interface(device):
     info = get_device_info(device)
     if 'ip' in info and 'netmask' in info:
-        return netaddr.IPNetwork("{ip}/{mask}".format(ip=info['ip'], mask=info['netmask']))
+        return ipaddress.ip_interface("{ip}/{mask}".format(ip=info['ip'], mask=info['netmask']))
     else:
         return None
 
@@ -212,6 +213,9 @@ def get_devices_info():
 	
 #def get_device_info
 
+def get_devices():
+	return netifaces.interfaces()
+#def get_devices
 
 def get_net_size(netmask):
 	'''
