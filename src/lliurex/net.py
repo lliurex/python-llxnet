@@ -205,6 +205,9 @@ def get_devices_info():
 	
 #def get_device_info
 
+def get_devices():
+	return netifaces.interfaces()
+#def get_devices
 
 def get_net_size(netmask):
 	'''
