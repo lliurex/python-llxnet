@@ -1,3 +1,10 @@
+python-llxnet (0.25) focal; urgency=medium
+
+  * Rename get_IPNetwork_object by get_ip_interface 
+  * replace netaddr by ipaddress on get_ip_interface function
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 05 Feb 2021 18:30:57 +0100
+
 python-llxnet (0.24.1) focal; urgency=medium
 
   * Fix function to get ip object. If ip is not set return None
