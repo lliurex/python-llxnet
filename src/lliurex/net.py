@@ -4,7 +4,7 @@ import socket
 import struct
 import subprocess
 
-def get_IPNewtork_object(device):
+def get_IPNetwork_object(device):
     info = get_device_info(device)
     if 'ip' in info and 'netmask' in info:
         return netaddr.IPNetwork("{ip}/{mask}".format(ip=info['ip'], mask=info['netmask']))
