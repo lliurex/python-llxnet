@@ -1,3 +1,10 @@
+python-llxnet (0.26) focal; urgency=medium
+
+  * Add patch to solve problem with nat is disabled. Add w option to wait lock
+    xtable 
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Tue, 14 Mar 2023 13:05:16 +0100
+
 python-llxnet (0.25) focal; urgency=medium
 
   * Rename get_IPNetwork_object by get_ip_interface 
