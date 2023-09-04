@@ -1,0 +1,24 @@
+Source: python-llxnet
+Section: python
+Priority: standard
+Maintainer: Equipo LliureX <lliurex@gva.es>
+Uploaders: Raul Rodrigo Segura <raurodse@gmail.com>, Hector Garcia Huerta <hectorgh@gmail.com>
+Build-Depends: debhelper (>= 9.0.0),
+               dh-python,
+               python3-setuptools,
+               python3-all,
+Standards-Version: 3.9.7
+
+Package: llxnet-common
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: python-llxnet(<<0.19)
+Replaces: python-llxnet(<<0.19)
+Description: Common files to python-llxnet
+ Include binary scripts to work fine
+
+Package: python3-llxnet
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python3:Depends}, python3,  python3-netifaces, python3-netaddr, ethtool, llxnet-common
+Description:  Lliurex net library for python
+ Lliurex net library for python a
