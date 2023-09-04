@@ -1,3 +1,9 @@
+python-llxnet (0.36) jammy; urgency=medium
+
+  * Initial release for jammy
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Mon, 04 Sep 2023 12:21:56 +0200
+
 python-llxnet (0.26) focal; urgency=medium
 
   * Add patch to solve problem with nat is disabled. Add w option to wait lock
