@@ -3,30 +3,42 @@
 import importlib.util
 import sys
 import ipaddress
+import yaml
 
 if len(sys.argv) != 3 :
     print('error',file=sys.stderr)
     sys.exit(1)
 
-spec = importlib.util.spec_from_file_location('netplan','/usr/share/netplan/netplan/configmanager.py')
-netplan = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(netplan)
-netplan_config_manager = netplan.ConfigManager()
+sys.path.append('/usr/share/netplan')
+from netplan import configmanager 
+netplan_config_manager = configmanager.ConfigManager()
 netplan_config_manager.parse()
+netplan_state = netplan_config_manager.np_state
+with open('/dev/shm/netplan-query','w+') as fd:
+    netplan_state.dump_yaml(fd)
+    fd.seek(0)
+    netplan_config = yaml.safe_load(fd)['network']
 
 interface = sys.argv[1]
 needle = sys.argv[2]
 
+try:
+    netpla_config['ethernets'][interface]['addresses']
+except :
+    print('error',file=sys.stderr)
+    sys.exit(1)
+
+
 raw_ip = None
 if needle.startswith('replication_'):
-    for ip in netplan_config_manager.ethernets[interface]['addresses']:
+    for ip in netplan_config['ethernets'][interface]['addresses']:
         if ip.startswith('10.3'):
             raw_ip = ip
             break
         else:
             continue
 else:
-    for ip in netplan_config_manager.ethernets[interface]['addresses']:
+    for ip in netplan_config['ethernets'][interface]['addresses']:
         if not ip.startswith('10.3'):
             raw_ip = ip
             break
