@@ -1,3 +1,9 @@
+python-llxnet (0.36.1) jammy; urgency=medium
+
+  * Fix bug with netplan version
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Mon, 22 Apr 2024 15:45:03 +0200
+
 python-llxnet (0.36) jammy; urgency=medium
 
   * Initial release for jammy
