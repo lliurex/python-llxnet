@@ -4,6 +4,7 @@ import importlib.util
 import sys
 import ipaddress
 import yaml
+import os
 
 if len(sys.argv) != 3 :
     print('error',file=sys.stderr)
@@ -14,18 +15,20 @@ from netplan import configmanager
 netplan_config_manager = configmanager.ConfigManager()
 netplan_config_manager.parse()
 netplan_state = netplan_config_manager.np_state
-with open('/dev/shm/netplan-query','w+') as fd:
+
+with open('/dev/shm/netplan-query','a+') as fd:
     netplan_state.dump_yaml(fd)
     fd.seek(0)
     netplan_config = yaml.safe_load(fd)['network']
+os.remove('/dev/shm/netplan-query')
 
 interface = sys.argv[1]
 needle = sys.argv[2]
 
 try:
-    netpla_config['ethernets'][interface]['addresses']
+    netplan_config['ethernets'][interface]['addresses']
 except :
-    print('error',file=sys.stderr)
+    print('error malo',file=sys.stderr)
     sys.exit(1)
 
 
