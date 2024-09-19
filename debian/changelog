@@ -1,3 +1,9 @@
+python-llxnet (0.46.2) noble; urgency=medium
+
+  * Initial release for noble
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Thu, 19 Sep 2024 10:05:02 +0200
+
 python-llxnet (0.36.2) jammy; urgency=medium
 
   * Delete shm file 
