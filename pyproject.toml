@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools","setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-llxnet"
+version = "0.19"
+description = "lliurex net library for python"
+authors = [
+	{ name = "Hector Garcia Huerta", email="hectorgh@gmail.com" },
+	{ name = "Raul Rodrigo Segura", email="raurodse@gmail.com" },
+	{ name = "LliureX Team"}
+]
+license = {text="GPL-3"}
+urls = {repository="https://github.com/lliurex/python-llxnet"}
+
+[tool.setuptools]
+package-dir={""="src"}
